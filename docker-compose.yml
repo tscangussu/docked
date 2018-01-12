@@ -16,12 +16,12 @@ services:
   wordpress:
     image: dockium/wordpress:4.9.1_1
     environment:
-      WP_DB_HOST: mysql
-      WP_DB_USER: wordpress
-      WP_DB_PASSWORD: wordpress
-      WP_DB_NAME: wordpress
-      WP_DB_PORT: '3306'
-      WP_TABLE_PREFIX: zp
+      WORDPRESS_DB_HOST: mysql
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress
+      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_DB_PORT: '3306'
+      WP_TABLE_PREFIX: dc
     depends_on:
       - mysql
     mem_limit: 256m
