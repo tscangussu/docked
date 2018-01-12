@@ -1,0 +1,14 @@
+version: '2'
+
+services:
+  wordpress:
+    volumes:
+      - app:/var/www/
+      - ./config/wordpress/wp-config-local.php:/var/www/wp-config-local.php
+      - ./config/wordpress/docker-wp-entrypoint.sh:/var/www/docker-wp-entrypoint.sh
+    environment:
+      HOST_GID: '1000'
+      HOST_UID: '1000'
+      WP_ENV: 'dev'
+    entrypoint: /var/www/docker-wp-entrypoint.sh
+    command: ["php-fpm7.1"]
