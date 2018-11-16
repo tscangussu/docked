@@ -10,27 +10,34 @@ services:
   mysql:
     image: percona/percona-server:5.7
     environment:
-      MYSQL_ROOT_PASSWORD: pressmogul
-      MYSQL_DATABASE: pressmogul
-      MYSQL_USER: pressmogul
-      MYSQL_PASSWORD: pressmogul
+      MYSQL_ROOT_PASSWORD: docked
+      MYSQL_DATABASE: docked
+      MYSQL_USER: docked
+      MYSQL_PASSWORD: docked
     volumes:
       - database:/var/lib/mysql
     networks:
       - backend
   wordpress:
-    image: pressmogul/wordpress:nightly
+    image: docked/wordpress:nightly
     environment:
       WP_DB_HOST: mysql
-      WP_DB_USER: pressmogul
-      WP_DB_PASSWORD: pressmogul
-      WP_DB_NAME: pressmogul
+      WP_DB_USER: docked
+      WP_DB_PASSWORD: docked
+      WP_DB_NAME: docked
       WP_DB_PORT: '3306'
-      WP_TABLE_PREFIX: dc
+      WP_TABLE_PREFIX: dd
+      WP_ENV: 'development'
+      WP_DEBUG: 'true'
+      WP_DEBUG_LOG: 'false'
+      WP_DEBUG_DISPLAY: 'true'
+      SCRIPT_DEBUG: 'false'
+      HOST_GID: '1000'
+      HOST_UID: '1000'
     depends_on:
       - mysql
     volumes:
-      - content:/var/www/wordpress/wp-content
+      - ./content:/var/www/wordpress/wp-content
     networks:
       - backend
     ports:
@@ -39,4 +46,3 @@ networks:
   backend:
 volumes:
   database:
-  content:
