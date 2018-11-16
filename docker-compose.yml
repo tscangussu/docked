@@ -34,6 +34,12 @@ services:
       SCRIPT_DEBUG: 'false'
       HOST_GID: '1000'
       HOST_UID: '1000'
+      WP_INSTALL: 'true'
+      WP_SITE_URL: localhost
+      WP_SITE_TITLE: Docked 
+      WP_ADMIN_USER: docked
+      WP_ADMIN_PASSWRD: docked
+      WP_ADMIN_EMAIL: docked@pressmogul.com
     depends_on:
       - mysql
     volumes:
