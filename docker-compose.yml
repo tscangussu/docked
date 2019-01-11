@@ -5,7 +5,7 @@ services:
     restart: always
     ports:
       - 8080:8080
-    networks: 
+    networks:
       - backend
   mysql:
     image: percona/percona-server:5.7
@@ -19,7 +19,7 @@ services:
     networks:
       - backend
   wordpress:
-    image: docked/wordpress:nightly
+    image: docked/wordpress:5.0.3
     environment:
       WP_DB_HOST: mysql
       WP_DB_USER: docked
@@ -36,7 +36,7 @@ services:
       HOST_UID: '1000'
       WP_INSTALL: 'true'
       WP_SITE_URL: localhost
-      WP_SITE_TITLE: Docked 
+      WP_SITE_TITLE: Docked
       WP_ADMIN_USER: docked
       WP_ADMIN_PASSWRD: docked
       WP_ADMIN_EMAIL: docked@pressmogul.com
